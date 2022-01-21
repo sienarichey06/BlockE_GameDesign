@@ -15,6 +15,9 @@ os.system('cls')
 #guess a number
 # myNumber = 9 instead of using fized number we will use random
 myNumber=random.randint(1,10)
+print('####################################')
+print('#                                  #')
+print('#          guess a number          #')
 GameOn=True
 while(GameOn):
     userGuess=int(input("Guess a number from 1-10 "))
