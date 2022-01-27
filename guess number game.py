@@ -23,14 +23,16 @@ os.system('cls')
 
 #Let's make menu a function key word def
 def menu():
-    print('######################################')
-    print('#       Guess A Number Menu          #')
-    print('#                                    #')
-    print('#         1. Choices 1-10            #')
-    print('#         2. Choices 1-50            #')
-    print('#         3. Choices 1-100           #')
-    print('#        Select your choice          #')
-    print('######################################')
+    print('#############################################################')
+    print('#       Can you guess the number I am thinking of?          #')
+    print('#                                                           #')
+    print('#                     PICK YOUR LEVEL                       #')
+    print('#              BEGINNER: Choices 1-10 (type 1)              #')
+    print('#            INTERMEDIATE: Choices 1-50 (type 2)            #')
+    print('#             ADVANCED: Choices 1-100 (type 3)              #')
+    print('#                                                           #')
+    print('#         10 attemps to test your master abilities          #')
+    print('#############################################################')
 #Checking for correct user input
 
 menu()  #calling the function menu
@@ -40,7 +42,7 @@ while check:
         choice=int(input("Choice: "))
         check=False
     except ValueError:
-        print("Sorry, wrong choice, please enter 1 to 3 only")
+        print("Rough start for you! Please enter a number 1 to 3 only")
 
 
 if choice == 1:
