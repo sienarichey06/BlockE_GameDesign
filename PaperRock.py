@@ -18,10 +18,12 @@
 
 # Complete game and ask to play again after one round of play
 
+
+
 import os, random
 os.system('cls')
 
-
+GameOn=True
 
 myNumber=random.randint(1,10)
 
@@ -41,25 +43,24 @@ def menu():
 
 menu()  #calling the function menu
 
-user= 'paper'
-computer = 1
 
-if '1' in user:
-    user =int(1)
-    print("paper"+str(user))
-elif '2' in user:
-    user=int(2)
-elif '3' in user:
-    user=int(3)
+while (GameOn):
 
-if choice == 1:
-    myNumber= random.randint(1,3)
+    if 'rock' in user:
+        
+        user =int(1)
+        print("paper"+str(user))
+    elif 'paper' in user:
+        user=int(2)
+    elif '' in user:
+        user=int(3)
 
-elif choice == 2:
-    myNumber= random.randint(1,3)
+    choice=input("choice: ")
 
-elif choice == 3:
-    myNumber = random.randint(1,3)
+    if choice == rock: 
+    elif choice == paper:
+    elif choice == scissors:
+    
 
 
 GameOn=True
@@ -78,3 +79,8 @@ while(GameOn):
         attempts = attempts - 1
 os.system('cls')
 menu()
+
+
+ endchoice=input("Make Your Choice")
+    if 'Y' in endchoice:
+        computernum = random.randing(1,3)
