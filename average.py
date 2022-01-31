@@ -1,5 +1,5 @@
 from enum import Flag
-import os
+import os, random
 #Siena M Richey
 #Jan 14, 2022
 # Declare variables, print variables, print type of data, learn some operators
