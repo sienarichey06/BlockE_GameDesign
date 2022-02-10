@@ -3,20 +3,36 @@
 #Word Game with 3 levels: 
 #       1. Fruits
 #       2. Animals 
-#       3. COmputer Parts   
+#       3. Computer Parts   
 # Choice:
 
 #Create word lists
 from modulefinder import IMPORT_NAME
 import os, random 
 os.system('cls')
+
+def menu():
+    print('##########################################################')
+    print('#            How Well Do You Know Your Words?            #')
+    print('#                    Lets find out!!                     #')
+    print('#                                                        #')
+    print('#                   CHOICE OF LEVELS:                    #')
+    print('#                       1. FRUITS                        #')
+    print('#                      2. ANIMALS                        #')
+    print('#                    3. COMPUTER PARTS                   #')
+    print('#                                                        #')
+    print('#       choose any category to recieve instructions!     #')
+    print('##########################################################')
+
 word=""
 guess=""
 def selectWord():
     global word
-    fruits=["bananas", "grapes", "waterMelon", "papaya", 'oranges', 'tomatoes','mangos', 'kiwis', 
+    fruits=["bananas", "grapes", "watermelon", "papaya", 'oranges', 'tomatoes','mangos', 'kiwis', 
     'strawberries' 'mangoes', 'blueberries', 'apples']
-
+    animals=["horse", "snake", "dog", "cow", "hamster", "pig", "turtle", "frog", "wolf", "elephant", 
+    "cheetah", "giraffe"]
+    computerparts= ["mouse", "screen", "motherboard", "monitor", "keyboard"]
     # size=(len(fruits))
     # randy= random.randint(0,size)
     # print(randy)
@@ -35,7 +51,7 @@ def guessFunction():
                  print("only one letter please")
         except ValueError:
             print("only one letter please")
-
+menu()
 gameOn=True
 tries=0
 letterGuessed=""
@@ -44,7 +60,7 @@ while gameOn:
     
     guessFunction()
     letterGuessed += guess  #letterGuessed=letterGuessed + guess
-    if guess not in word:
+    if guess not in word:   
         tries +=1
         print(tries)# for testing delete when game is ready
     countLetter=0
