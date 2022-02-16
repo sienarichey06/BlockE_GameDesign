@@ -17,14 +17,18 @@ def menu():
     print('#                    Lets find out!!                     #')
     print('#                                                        #')
     print('#                   CHOICE OF LEVELS:                    #')
-    print('#                       1. FRUITS                        #')
+    print('#                      1. FRUITS                         #')
     print('#                      2. ANIMALS                        #')
-    print('#                    3. COMPUTER PARTS                   #')
+    print('#                   3. COMPUTER PARTS                    #')
     print('#                                                        #')
-    print('#       choose any category to recieve instructions!     #')
+    print('#     choose any category to recieve instructions!       #')
+    print('#                                                        #')
+    print('#                      SCOREBOARD:                       #')
+    print('#                                                        #')
+    print('#                       EXIT GAME                        #')
     print('##########################################################')
 
-word=""
+word=""                  
 guess=""
 def selectWord():
     global word
@@ -32,12 +36,15 @@ def selectWord():
     'strawberries' 'mangoes', 'blueberries', 'apples']
     animals=["horse", "snake", "dog", "cow", "hamster", "pig", "turtle", "frog", "wolf", "elephant", 
     "cheetah", "giraffe"]
-    computerparts= ["mouse", "screen", "motherboard", "monitor", "keyboard"]
+    computerparts= ["mouse", "screen", "motherboard", "monitor", "keyboard", "storage", "battery" , "fans" , 
+    "wires" , "rgb" , "ram" , "cpu"]
     # size=(len(fruits))
     # randy= random.randint(0,size)
     # print(randy)
     # word=fruits[randy]
     # print(word)
+    while gameOn:
+        if: choice = fruits 
     word=random.choice(fruits)
 def guessFunction():
     global guess
