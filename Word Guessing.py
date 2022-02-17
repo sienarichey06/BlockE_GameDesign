@@ -10,8 +10,12 @@
 from modulefinder import IMPORT_NAME
 import os, random 
 os.system('cls')
-
+#variables
+word=""                  
+guess=""
+sel=""
 def menu():
+    global sel
     print('##########################################################')
     print('#            How Well Do You Know Your Words?            #')
     print('#                    Lets find out!!                     #')
@@ -23,13 +27,22 @@ def menu():
     print('#                                                        #')
     print('#     choose any category to recieve instructions!       #')
     print('#                                                        #')
-    print('#                      SCOREBOARD:                       #')
+    print('#                    4. SCOREBOARD:                      #')
     print('#                                                        #')
-    print('#                       EXIT GAME                        #')
+    print('#                      5. EXIT GAME                      #')
     print('##########################################################')
+    check=True
 
-word=""                  
-guess=""
+    while check:
+        try:
+            sel=int(input("Choice: "))
+            if sel>0 and sel<6: 
+                check=False
+            else: 
+                print("Rough start for you! Please enter a number 1-5 only.")
+        except ValueError:
+            print("Rough start for you! Please enter a number 1-4 only")
+
 def selectWord():
     global word
     fruits=["bananas", "grapes", "watermelon", "papaya", 'oranges', 'tomatoes','mangos', 'kiwis', 
@@ -38,14 +51,29 @@ def selectWord():
     "cheetah", "giraffe"]
     computerparts= ["mouse", "screen", "motherboard", "monitor", "keyboard", "storage", "battery" , "fans" , 
     "wires" , "rgb" , "ram" , "cpu"]
+    
+    print(type(sel))
+    if sel == 1:
+        word=random.choice(fruits)
+    elif sel == 2:
+        word=random.choice(animals)
+    elif sel == 3:
+        word=random.choice(computerparts)
+    elif sel == 4:
+        print("score= ", score)
+        os.system ('cls')
+        menu()
+    else:
+        print("goodbye, thank you for playing")
+        quit()
+
     # size=(len(fruits))
     # randy= random.randint(0,size)
     # print(randy)
     # word=fruits[randy]
     # print(word)
-    while gameOn:
-        if: choice = fruits 
-    word=random.choice(fruits)
+    
+    
 def guessFunction():
     global guess
     check=True
@@ -79,8 +107,15 @@ while gameOn:
             print("_", end=" ")
     if tries>6:
         print("\n Sorry, ran out of chances")
+        input("press any key to continue")
+        os.system ('cls')
+        menu()
+
         #playgame() ask user if they want to play again
     if countLetter == len(word):
         print("you guessed it!")
-        #Calculate score
+        score=len(word)*3-5*tries #Calculate score
         #playGame()
+        input("press any key to continue")
+        os.system ('cls')
+        menu()
