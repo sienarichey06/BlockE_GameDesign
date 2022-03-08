@@ -2,6 +2,7 @@
 #Make a deck of cards adding each suit
 
 #first let's import random since we will be shuffling
+from msvcrt import LK_LOCK
 import random, os
 os.system('cls')
 deck=[]
@@ -132,3 +133,7 @@ while GameOn:
 
 
 #after a round, the user who wins gets all of the cards from the rounds that they won
+
+
+
+
