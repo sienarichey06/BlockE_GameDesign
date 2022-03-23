@@ -39,13 +39,16 @@ colors={'white':[255, 255, 255], 'red': [255, 0, 0], 'aqua':[51,153,255], 'orang
 background= colors.get('pink')
 randColor= ''
 cr_color=colors.get('white')
+
 def changeColor():
     global randColor
     colorCheck=True
     while colorCheck:
         randColor=random.choice(list(colors))
-        if randColor==background:
-         randColor=random.choice(list(colors))
+        if colors.get(randColor)==background:
+            print(randColor)
+            print(background)
+            randColor=random.choice(list(colors))
         else:
             colorCheck=False
 
