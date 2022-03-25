@@ -57,4 +57,4 @@ for i in range(7):
     txty+=50
     
 pygame.display.update()
-pygame.time.delay(10000)
+pygame.time.delay(1000)
