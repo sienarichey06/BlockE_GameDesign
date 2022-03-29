@@ -3,17 +3,28 @@
 #Use keys to move objects
 #Using dictionaries
 
+#Objective of the game is for the rect to run away fom the circle, if they collide the circle etas the square, 
+#circle will  get larger, and a new rect should appear somewhere on the screen
+# K_UP                  up circle
+# K_DOWN                down circle
+# K_RIGHT               right circle
+# K_LEFT                left circle
+# K_a                   left square
+# K_d                   right square
+# K_w                   up square
+# K_s                   down square
+# K_SPACE               jump
+
 #Objective of the game is for the rect to get away from the circle, if they collide the circle eats the square
 #Circle will get larger and a new rect should appear somewhere on screen
 
 import colorsys
-from curses import mouseinterval
-import os, random, time, pygame
+import os, random, time, pygame, math
 from pickle import TRUE
 
 pygame.init()
 
-#Declare constants, variables, list, dictionaries, any object
+#Declare constants, variables, list, dictionaries, any objectu
 
 WIDTH=700
 HEIGHT=700
@@ -91,10 +102,11 @@ def TitleMenu(Message):
 square=pygame.Rect(xs, ys, wb, hb)
 #this is a function uses a parameter
 
-def MainMenu(Mlist):
+def MainMenu(Menulist):
     txty=243
-    for i in range(len(Mlist)):
-        message=Mlist[i]
+    square.y=250
+    for i in range(len(Menulist)):
+        message=Menulist[i]
         text=INST_FNT.render(message,1, (0, 0, 255))
         screen.blit(text, (90,txty))
         pygame.draw.rect(screen, sq_color, square)
@@ -102,9 +114,7 @@ def MainMenu(Mlist):
         txty+=50
         
     pygame.display.update()
-    pygame.time.delay(1000)
-
-
+    pygame.time.delay(10)
 
 def changeColor():
     global randColor
@@ -127,15 +137,15 @@ sq_color=colors.get(randColor)
 MAX=10
 jumpCount=MAX
 JUMP=False
-
 while check:
-    screen.fill(background)
-    TitleMenu("MENU")
-    MainMenu(MenuList)
+
+    if MAIN:
+        screen.fill(background)
+        TitleMenu("MENU")
+        MainMenu(MenuList)
     for case in pygame.event.get():
         if case.type==pygame.QUIT:
             check=False
-
     keys= pygame.key.get_pressed()#this returns a list
     if case.type == pygame.MOUSEBUTTONDOWN:
         mouse_pos=pygame.mouse.get_pos()
