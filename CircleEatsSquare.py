@@ -19,16 +19,20 @@
 #Circle will get larger and a new rect should appear somewhere on screen
 
 import colorsys
-import os, random, time, pygame, math
-from pickle import TRUE
-
+import os, random, time, pygame, math, datetime
+os.system('cls') 
+name=input('What is your name?')
+#initialize pygame
 pygame.init()
 
 #Declare constants, variables, list, dictionaries, any objectu
 
+name=input('What is your name?')
 WIDTH=700
 HEIGHT=700
 check=True #for the while loop
+MAIN=True
+INST
 move=5 #pixels
 xs=20
 ys=20
@@ -101,7 +105,6 @@ def TitleMenu(Message):
 
 square=pygame.Rect(xs, ys, wb, hb)
 #this is a function uses a parameter
-
 def MainMenu(Menulist):
     txty=243
     square.y=250
@@ -112,6 +115,8 @@ def MainMenu(Menulist):
         pygame.draw.rect(screen, sq_color, square)
         square.y+=50
         txty+=50
+        \
+        
         
     pygame.display.update()
     pygame.time.delay(10)
@@ -128,6 +133,14 @@ def changeColor():
         else:
             colorCheck=False
 
+def instr():
+
+def keepScore(score):
+    date=datetime.datetime.now()
+    print(date strftime('%m/%d/%Y'))
+    scoreLine=str(score)+" "+name+" "+date.strftime ('%m/%d/%Y'+'\n')
+
+def playGame():
 # sq_color=colors.get('navy')
 #Making a rand c f the square
 changeColor()
