@@ -1,10 +1,12 @@
-#MAria I SUarez
-#learning how to draw circles and rectangles
-#use keys to move objects
+#SienaRichey
+#Learning how to draw circles and rectangles
+#Use keys to move objects
 #Using Dictionaries
 
-#Objective of the game is for the rect to run away fom the circle, if they collide the circle etas the square, 
-#circle will  get larger, and a new rect should appear somewhere on the screen
+#Objective of the game is for the rect to run away fom the circle, if they collide the circle eats the square
+
+#circle will get larger and a new rect should appear somewhere on the screen
+
 # K_UP                  up circle
 # K_DOWN                down circle
 # K_RIGHT               right circle
@@ -19,12 +21,12 @@
 import os, random, time, pygame, math, datetime
 from turtle import screensize
 os.system('cls')
+
 name=input("What is your name? ")
 #initialize pygame
 pygame.init()
 
-#Declare constants, variables, list, dictionaries, any object
-#scree size
+#Declare constants, variables, list, dictionaries, any objects
 WIDTH=700
 HEIGHT=700
 xMs=50
@@ -38,11 +40,7 @@ LEV_I=False
 LEV_II=False
 LEV_III=False
 SCORE=False
-#List f messages
-MenuList=['Instructions','Settings', "Level I","Level II",'Level III','Scoreboard','Exit']
-SettingList=['Screen Size','Backgrnd Color','Icon','']
-sizeList=['1000 x 1000','800 x 800','600 x 600']
-check=True #for the while loop
+
 
 #create screen
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
@@ -51,19 +49,30 @@ pygame.display.set_caption('Circle eats Square')
 #define colors
 colors={'white':[255,255,255], 'red':[255,0,0], 'aqua':[102,153, 255],
 'orange':[255,85,0],'purple':[48,25,52],'navy':[5,31,64],'pink':[200,3,75]}
+
 #Get colors
 background= colors.get('white')
 randColor=''
 cr_color=colors.get('aqua')
 sqM_color=colors.get('pink')
 BLACK=(0,0,0)
-#create fifferent type 
+
+#list for messages
+MenuList=['Instructions','Settings', "Level I","Level II",'Level III','Scoreboard','Exit']
+SettingList=['Screen Size','Backgrnd Color','Icon','']
+sizeList=['1000 x 1000','800 x 800','600 x 600']
+check=True #for the while loop
+
+#create different type 
 TITLE_FNT=pygame.font.SysFont('comicsans', 80)
 MENU_FNT=pygame.font.SysFont('comicsans', 40)
 INST_FNT=pygame.font.SysFont('comicsans', 30)
-#Create square fr menu
 
+
+#Create square for menu
 squareM=pygame.Rect(xMs,yMs,wb,hb)
+
+
 #Create Title
 def TitleMenu(Message):
     text=TITLE_FNT.render(Message, 1, (255,0,0))
@@ -72,7 +81,9 @@ def TitleMenu(Message):
     #x value = WIDTH/2 - wText/2
     xt=WIDTH/2-text.get_width()/2
     screen.blit(text,(xt,50))
-#This is a function uses a parameter
+
+
+#This is a function that uses a parameter
 def MainMenu(Mlist):
     txty=243
     squareM.y=250
@@ -98,7 +109,7 @@ def changeColor():
             colorCheck=False
 def instr():
     print("in instr")
-    myFile=open('ClassStuff\CircleEatsSquare\instructions.txt', 'r')
+    myFile=open('Games\CircleGameInst.txt', 'r')
     yi=150
     stuff= myFile.readlines()
 
@@ -116,7 +127,8 @@ def keepScore(score):
     date=datetime.datetime.now()
     print(date.strftime('%m/%d/%Y'))
     scoreLine=str(score)+"\t"+name+"\t"+date.strftime('%m/%d/%Y'+'\n')
- 
+
+
     #open a file and write in it 
     # when y write it erases the prev 
     myFile=open('ClassStuff\sce.txt','a') 
@@ -133,23 +145,16 @@ def scoreBoard():
     j=0
     for i in range(N, -1, -1):
         print(i,stuff[i])
-        # temp[j]=stuff[i]
-        #     j +=1
-        # print(temp)
-        # for i in range(N):
-        #     text=INST_FNT.render(temp[i], 1, BLACK)
-        #     screen.blit(text, (40,yi))
-        #     pygame.display.update()
-        #     pygame.time.delay(50)
-        #     yi+=50
-    
+
+
 def keepScore(score):
     date=datetime.datetime.now()
     print(date.strftime('%m/%d/%Y'))
     scoreLine='\n'+str(score)+"\t"+name+"\t"+date.strftime('%m/%d/%Y'+'\n')
+
  
     #open a file and write in it 
-    # when y write it erases the prev 
+    # when you write it erases the previous
     myFile=open('ClassStuff\CircleEatsSquare\sce.txt','a') 
     myFile.write(scoreLine)
     myFile.close()
@@ -167,6 +172,7 @@ def changeScreenSize(xm,ym):
         HEIGHT=600
         WIDTH=600
     screen=pygame.display.set_mode((WIDTH,HEIGHT))
+
  
 def playGame():
     move=5 #pixels
@@ -175,15 +181,21 @@ def playGame():
     ys=20
     wbox=30
     hbox=30
+
+
     #circle variables
     rad=15
     xc=random.randint(rad, WIDTH-rad)
     yc=random.randint(rad, HEIGHT-rad)
+
+
     #inscribed Square:
     ibox=int(rad*math.sqrt(2))
     startpoint = (int(xc-ibox/2),int(yc-ibox/2))
     print(startpoint[0]-ibox,startpoint[1])
     insSquare=pygame.Rect(startpoint[0],startpoint[1],ibox,ibox)
+
+
     #creating the rect object
     square=pygame.Rect(xs,ys,wbox,hbox)
     global MAIN
@@ -227,18 +239,19 @@ def playGame():
                 jumpCount=MAX
                 JUMP=False
 
+
     #Finish circle
         if keys[pygame.K_LEFT] and xc >=rad+move:
-            xc -= move #substract 5 from the x value
+            xc -= move #subtract 5 from the x value
             insSquare.x -= move
         if keys[pygame.K_RIGHT] and xc <=WIDTH -(rad+move):
-            xc += move #substract 5 from the x value  
+            xc += move #subtract 5 from the x value  
             insSquare.x += move
         if keys[pygame.K_DOWN] and yc <=HEIGHT-(rad+move):
-            yc += move #substract 5 from the x value
+            yc += move #subtract 5 from the x value
             insSquare.y += move
         if keys[pygame.K_UP] and yc >=rad+move:
-            yc -= move #substract 5 from the x value  
+            yc -= move #subtract 5 from the x value  
             insSquare.y -= move
             
         checkCollide = square.colliderect(insSquare)
@@ -256,13 +269,13 @@ def playGame():
         pygame.draw.circle(screen, cr_color, (xc,yc), rad)
         pygame.display.update()
         pygame.time.delay(10)
+
 #sq_color=colors.get('navy')
 #Making a rand c f the square
 changeColor()
 
-#==============================================
-#
-#Beginning  main prram
+
+#Beginning  main program
 sq_color=colors.get(randColor)
 keys=pygame.key.get_pressed()
 mouse_pos=(0,0)
@@ -331,7 +344,7 @@ while check:
         screen.fill(background)
         TitleMenu("SCOREBOARD")
         scoreBoard()
-        #call funct t print scres
+        #call function print scores
         screCk=False
     if SCORE:
         if keys[pygame.K_ESCAPE]:
@@ -384,11 +397,11 @@ while check:
     if ((xm >20 and xm <80) and (ym >550 and ym <580)) :
         screen.fill(background)
         keepScore(121)
-        text=INST_FNT.render("Make sure you update the score file", 1, BLACK)
+        text=INST_FNT.render("Remember to update the score file!", 1, BLACK)
         screen.blit(text, (40,200))
-        text=INST_FNT.render("before you exit", 1, BLACK)
+        text=INST_FNT.render("Before you exit", 1, BLACK)
         screen.blit(text, (40,300))
-        text=INST_FNT.render("Thank you for playing", 1, BLACK)
+        text=INST_FNT.render("Thank you so much for playing!", 1, BLACK)
         screen.blit(text, (40,400))
         pygame.display.update()
         pygame.time.delay(50)
@@ -401,3 +414,69 @@ while check:
 
 os.system('cls')
 pygame.quit()
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ # if keys[pygame.K_a] and square.x >=move:
+    #     square.x -= move
+    # if keys[pygame.K_d] and square.x < WIDTH - (wbox):
+    #     square.x += move
+    # #jumping part
+    # if not JUMP:
+
+    #     if keys[pygame.K_w] and square.y >= move:
+    #         square.y -= move
+    #     if keys[pygame.K_s] and square.y < HEIGHT - (hbox):
+    #         square.y += move
+    #     if keys[pygame.K_SPACE]:
+    #         JUMP=True
+    # else: 
+    #     if jumpCount>=- MAX:
+    #         square.y-= jumpCount*abs(jumpCount)/2
+    #         jumpCount-= 1
+    #     else:
+    #         jumpCount=MAX
+    #         JUMP=False
+
+
+    # if keys[pygame.K_LEFT] and xc >=rad + move:
+    #        xc -= move
+    # if keys[pygame.K_RIGHT] and xc < WIDTH - (rad+move):
+    #        xc += move
+    # if keys[pygame.K_UP] and yc >= (rad + move):
+    #        yc -= move
+    # if keys[pygame.K_DOWN] and yc < HEIGHT - (rad + move):
+    #        yc += move
+
+    # checkCollide=square.collidepoint(xc, yc)
+    # if checkCollide:
+    #     square.x=random.randint(wbox, WIDTH)
+    #     square.y=random.randint(hbox, HEIGHT)
+    #     changeColor()
+    #     sq_color=colors.get(randColor)
+    #     rad += move 
+    # pygame.draw.rect(screen, sq_color, square)
+    # pygame.draw.circle(screen, cr_color, (xc, yc), rad)
+
+    # pygame.display.update()
+    # pygame.time.delay(10)
