@@ -254,7 +254,7 @@ def draw(dict):
 
         if card_statis[0][0]==0:
 
-            screen.blit(square,(x,y))
+            screen.blit(square,(x,y))\
 
         else:
 
