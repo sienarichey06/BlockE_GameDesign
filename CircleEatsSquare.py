@@ -1,10 +1,9 @@
-#Nikky Nandipati
+#Siena Richey
 #4/5/22
 #Some help from
 # https://www.youtube.com/watch?v=FfWpgLFMI7w&ab_channel=freeCodeCamp.org
 # https://www.youtube.com/watch?v=wkrXbl1RlAg&ab_channel=FHCoding
-# https://www.geeksforgeeks.org/decimal-functions-python-set-1/
-# https://www.youtube.com/watch?v=g8-VJo9sXlU&ab_channel=MasterCodeOnline
+
 
 import pygame as p
 import os
