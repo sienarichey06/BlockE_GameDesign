@@ -45,14 +45,14 @@ square=pygame.transform.scale(square,(size,size))
 
 
 aariz=pygame.image.load("Images\\aariz.PNG")
-
+aariz=pygame.transform.scale(aariz,(size,size))
 alex=pygame.image.load("Images\\alex.PNG")
 
 zain=pygame.image.load("Images\\zain.PNG")
 
 varun=pygame.image.load("Images\\varun.PNG")
 
-devin=pygame.image.load("images\\hippo.jpg")
+devin=pygame.image.load("Images\devin.PNG")
 
 vivaan=pygame.image.load("Images\\vivaan.PNG")
 
@@ -68,7 +68,7 @@ christine=pygame.image.load("Images\\christine.PNG")
 
 chris=pygame.image.load("Images\\chris.PNG")
 
-anwar=pygame.image.load("Images\\anwar.PNG")
+suarez=pygame.image.load("Images\suarez.PNG")
 
 dillon=pygame.image.load("Images\\dillon.PNG")
 
@@ -77,46 +77,47 @@ dillon=pygame.image.load("Images\\dillon.PNG")
 
 celebration=pygame.image.load("Images\\celebration.PNG")
 
-celebration=pygame.transform.scale(fireworks,(WIDTH,HEIGHT))
+celebration=pygame.transform.scale(celebration,(WIDTH,HEIGHT))
 
-mysterybackround=pygame.image.load("Images\\mainbackground.PNG") 
+mysterybackground=pygame.image.load("Images\\Mainbackground.PNG") 
 
 
 #colors
 
-white=(255,255,255)
+white=(255,255,51)
 
-black=(0,0,0)
+black=(51,0,102)
 
-blue= (196, 224, 255)
+blue= (204, 255, 229)
 
 green= (74, 189, 41)
 
-yellow= (231, 195, 0)
+yellow= (0, 102, 204)
 
-red= (196, 52, 41)
+red= (255, 51, 153)
 
 purple= (158, 98, 170)
 
+npurple= (102,102,255)
 
 
 #fonts
 
 SCORE_FONT = pygame.font.SysFont('comicsans', 60)
 
-INFO_FONT = pygame.font.SysFont('comicsansms', 21)
+INFO_FONT = pygame.font.SysFont('comicsansms', 19)
 
 WIN_FONT = pygame.font.SysFont('comicsansms', 45)
 
 STAR_FONT = pygame.font.SysFont('comicsansms', 18)
 
-MENU_FONT = pygame.font.SysFont('comicsans', 45)
+MENU_FONT = pygame.font.SysFont('comicsans', 35)
 
 CHOICE_FONT = pygame.font.SysFont('comicsans', 45)
 
-TITLE_FONT = pygame.font.SysFont('comicsans', 70)
+TITLE_FONT = pygame.font.SysFont('comicsans', 50)
 
-BESTSCORES_FONT = pygame.font.SysFont('comicsansms', 60)
+BESTSCORES_FONT = pygame.font.SysFont('comicsansms', 55)
 
 
 
@@ -136,11 +137,87 @@ matches2=[aariz,aariz,alex,alex,zain,zain,varun,varun,devin,devin,vivaan,vivaan,
 
 #hard 4x7
 
-matches3=[aariz,aariz,alex,alex,zain,zain,varun,varun,devin,devin,vivaan,vivaan,lily,lily,michelle,michelle,zeff,zeff,prabath,prabath,christine,christine,chris,chris,anwar,anwar,dillon,dillon]
+matches3=[aariz,aariz,alex,alex,zain,zain,varun,varun,devin,devin,vivaan,vivaan,lily,lily,michelle,michelle,zeff,zeff,prabath,prabath,christine,christine,chris,chris,suarez,suarez,dillon,dillon]
 
 
 
-#CHANGE TO MY CODE
+
+#best scores
+
+def best_scores():
+
+    global define1, define2, define3
+
+    runBest=True
+
+    #screen continues showing while true
+
+    while runBest:
+
+        pressed=pygame.key.get_pressed()
+
+        screen.fill(blue)
+
+        text = TITLE_FONT.render("BEST SCORES FOR:", 1, black)
+
+        screen.blit(text, (WIDTH/2 - text.get_width()/2, 20))
+
+        #easy scores
+
+        file1=open("Games\\MemoryEasy.txt","r")
+
+        score1=file1.read()
+
+        easy = BESTSCORES_FONT.render("Easy:  "+score1,1,green)
+
+        file1.close()
+
+        screen.blit(easy,(WIDTH/2 - easy.get_width()/2, 200))
+
+        #medium scores
+
+        file2=open("Games\\MemoryMedium.txt","r")
+
+        score2=file2.read()
+
+        medium = BESTSCORES_FONT.render("Medium:  "+score2,1,yellow)
+
+        file2.close()
+
+        screen.blit(medium,(WIDTH/2 - medium.get_width()/2, 350))
+
+        #hard scores
+
+        file3=open("Games\\MemoryHard.txt","r")
+
+        score3=file3.read()
+
+        hard = BESTSCORES_FONT.render("Hard:  "+score3,1,red)
+
+        file3.close()
+
+        screen.blit(hard,(WIDTH/2 - hard.get_width()/2, 500))
+
+        #press anywhere
+
+        text=STAR_FONT.render("Press anywhere to go back to menu.",1,black)
+
+        screen.blit(text,(250,700))
+
+        pygame.display.update()
+
+        for event in pygame.event.get():
+
+            if event.type == pygame.QUIT:
+
+                runBest=False #window closes if "x" button is pressed
+
+            if event.type == pygame.MOUSEBUTTONDOWN:
+
+                runBest=False #if user pressed the mouse anywhere, screen goes to menu
+
+                menu()
+
 
 #draw screen/grid
 
@@ -455,21 +532,21 @@ def draw(dict):
 
     #title and score
 
-    text=SCORE_FONT.render("Score: "+str(score),1,black)
+    text=SCORE_FONT.render("Score: "+str(score),1,white)
 
-    screen.blit(text,(570,400))
+    screen.blit(text,(525,400))
 
-    game=BESTSCORES_FONT.render("Animal",1,black)
+    game=BESTSCORES_FONT.render("GREENHILL",1,white)
 
-    screen.blit(game,(565,80))
+    screen.blit(game,(455,80))
 
-    game=BESTSCORES_FONT.render("Memory",1,black)
+    game=BESTSCORES_FONT.render("MEMORY",1,white)
 
-    screen.blit(game,(540,150))
+    screen.blit(game,(493,150))
 
-    game=BESTSCORES_FONT.render("Game!",1,black)
+    game=BESTSCORES_FONT.render("GAME",1,white)
 
-    screen.blit(game,(570,220))
+    screen.blit(game,(530,220))
 
     pygame.display.update()
 
@@ -929,7 +1006,7 @@ def main(dict):
 
                         screen.blit(fireworks,(0,0)) #new background
 
-                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white) #tels user their score
+                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white) #tells user their score
 
                         screen.blit(win,(100,350))
 
@@ -991,13 +1068,13 @@ def main(dict):
 
                         pygame.time.delay(700)
 
-                        screen.blit(fireworks,(0,0))
+                        screen.blit(celebration,(0,0))
 
                         win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
 
                         screen.blit(win,(100,350))
 
-                        file3 = open("memoryHard.txt", "r")
+                        file3 = open("Games\\MemoryHard.txt", "r")
 
                         if int(file3.read())>score:
 
@@ -1007,7 +1084,7 @@ def main(dict):
 
                             screen.blit(best,(150,450))
 
-                            file3=open("memoryHard.txt","w")
+                            file3=open("Games\\MemoryHard.txt","w")
 
                             file3.write(str(score))
 
@@ -1037,39 +1114,39 @@ def menu():
 
         screen.fill(blue)
 
-        text = TITLE_FONT.render("LET'S PLAY A MEMORY GAME!", 1, black)
+        text = TITLE_FONT.render("LET'S PLAY A MEMORY GAME!", 0.5, black)
 
-        screen.blit(text, (40, 20))
+        screen.blit(text, (30, 20))
 
 
 
         #instructions
 
-        text = INFO_FONT.render("Once you choose your level, that number of cards will appear face down. You", 1, black)
+        text = INFO_FONT.render("Once you choose your level, the selected level of cards will appear. You", 1, black)
 
-        text2 = INFO_FONT.render("will click on two cards at a time, and those cards will flip over showing an image.", 1, black)
+        text2 = INFO_FONT.render("will click on one card to reveal an image, and then click another to find it's match.", 1, black)
 
         text3 = INFO_FONT.render("If the two images match, they will stay face up. If they do not, they will flip", 1, black)
 
-        text4 = INFO_FONT.render("back over and you will choose two more. This cycle will continue until all the", 1, black)
+        text4 = INFO_FONT.render("back over and you will continue selecting two cards at a time until all matches are found.", 1, black)
 
-        text5 = INFO_FONT.render("cards are face up. Good luck!",1,black)
+        text5 = INFO_FONT.render("You have found all of the matches when all of the cards are facing up. Good luck!",1,black)
 
         screen.blit(text, (infox, infoy))
 
-        screen.blit(text2, (infox, infoy+5+text.get_height()))
+        screen.blit(text2, (infox, infoy+3+text.get_height()))
 
-        screen.blit(text3, (infox, infoy+10+text.get_height()*2))
+        screen.blit(text3, (infox, infoy+8+text.get_height()*2))
 
-        screen.blit(text4, (infox, infoy+15+text.get_height()*3))
+        screen.blit(text4, (infox, infoy+13+text.get_height()*3))
 
-        screen.blit(text5, (infox, infoy+20+text.get_height()*4))
+        screen.blit(text5, (infox, infoy+18+text.get_height()*4))
 
 
 
-        choice = CHOICE_FONT.render("CHOICES:",1,black)
+        choice = CHOICE_FONT.render("SELECT A CHOICE:",1,black)
 
-        screen.blit(choice,(infox+50, infoy+70+text.get_height()*5))
+        screen.blit(choice,(infox+0, infoy+70+text.get_height()*5))
 
         #3 circles
 
@@ -1089,11 +1166,11 @@ def menu():
 
         one=MENU_FONT.render("1",1,green)
 
-        screen.blit(one,(left-8,down-12))
+        screen.blit(one,(left-8,down-26))
 
         choice1=MENU_FONT.render("Easy (12)",1,green)
 
-        screen.blit(choice1,(235,down-15))
+        screen.blit(choice1,(235,down-26))
 
 
 
@@ -1101,11 +1178,11 @@ def menu():
 
         two=MENU_FONT.render("2",1,yellow)
 
-        screen.blit(two,(left-8,down+RADIUS*2+6))
+        screen.blit(two,(left-10,down+RADIUS*1.7))
 
         choice2=MENU_FONT.render("Meduim (20)",1,yellow)
 
-        screen.blit(choice2,(235,down+45))
+        screen.blit(choice2,(235,down+35))
 
 
 
@@ -1113,11 +1190,11 @@ def menu():
 
         three=MENU_FONT.render("3",1,red)
 
-        screen.blit(three,(left-8,down+RADIUS*4+25))
+        screen.blit(three,(left-10,down+RADIUS*4+15))
 
         choice3=MENU_FONT.render("Hard (28)",1,red)
 
-        screen.blit(choice3,(235,down+105))
+        screen.blit(choice3,(235,down+96))
 
 
 
@@ -1125,11 +1202,11 @@ def menu():
 
         four=MENU_FONT.render("4",1,purple)
 
-        screen.blit(four,(left-8,down+RADIUS*6+45))
+        screen.blit(four,(left-10,down+RADIUS*6+35))
 
         choice4=MENU_FONT.render("Best Scores*",1,purple)
 
-        screen.blit(choice4,(235,down+165))
+        screen.blit(choice4,(235,down+155))
 
 
 
@@ -1137,23 +1214,23 @@ def menu():
 
         five=MENU_FONT.render("5",1,black)
 
-        screen.blit(five,(left-8,down+RADIUS*8+65))
+        screen.blit(five,(left-10,down+RADIUS*8+55))
 
         choice5=MENU_FONT.render("EXIT",1,black)
 
-        screen.blit(choice5,(235,down+225))
+        screen.blit(choice5,(235,down+214))
 
 
 
         #how to calculate scores
 
-        star=STAR_FONT.render("*Your score is the number of turns it takes you to guess all the matches, so the lower the", 1, purple)
+        star=STAR_FONT.render("*Your score will represent the number of attempts you take to find all of the matcher, so the", 1, npurple)
 
-        star2=STAR_FONT.render("score the better.*",1,purple)
+        star2=STAR_FONT.render(" lower the score you get, the better you played!*",1,npurple)
 
-        screen.blit(star,(20,700))
+        screen.blit(star,(10,700))
 
-        screen.blit(star2,(20,star.get_height()+705))
+        screen.blit(star2,(10,star.get_height()+705))
 
 
 
@@ -1259,4 +1336,4 @@ def menu():
 
 
 
-menu() #runs menu, and therefore, everything els
+menu() #runs menu, and therefore, everything else
