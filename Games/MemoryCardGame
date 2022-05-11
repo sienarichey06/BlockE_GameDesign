@@ -1,3 +1,30 @@
+#Siena Richey
+#Memory Card Game
+#Pseudocode:
+#menu will have settings
+#settings will have change background color 
+#menu will have instructions
+#menu will have exit option
+#menu will display 3 different levels
+#first level is 4x3, second 4x5, third 4x7, different amounts of cards for each level
+#import random to shuffle cards
+#create screen and define colors of game
+#create a list for images for closed cards and a list for flipped
+#create grid with tiles on the screen with closed card image
+#each new game, cards will reshuffle in a different order
+#user will click a level 
+#user will click card to reveal the image and then click a second card to find the match of the image of the first card
+#if the cards match when they are both flipped, they remain flipped but if they do not match they are flipped back to the original side and the user tries again until they find all of the matches
+#If statement to compare flipped cards if they are equal
+#2 cards clicked counts as 1 attempt
+#computer will count each attempt as a score of 1 as the game is played
+#game ends when user matches all cards
+#user will aim for a lower score at the end of the game, a lower score is better than a high score
+#end of game display score and celebration will appear
+
+
+
+
 import pygame, time, random, math
 
 
@@ -1006,7 +1033,7 @@ def main(dict):
 
                         screen.blit(fireworks,(0,0)) #new background
 
-                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white) #tells user their score
+                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,blue) #tells user their score
 
                         screen.blit(win,(100,350))
 
@@ -1160,6 +1187,9 @@ def menu():
 
         pygame.draw.circle(screen, black, (left, down+RADIUS*8+80), RADIUS, 3)
 
+        pygame.draw.circle(screen, black, (left, down+RADIUS*8+135), RADIUS, 3)
+
+
 
 
         #easy
@@ -1194,7 +1224,7 @@ def menu():
 
         choice3=MENU_FONT.render("Hard (28)",1,red)
 
-        screen.blit(choice3,(235,down+96))
+        screen.blit(choice3,(235,down+95))
 
 
 
@@ -1218,19 +1248,29 @@ def menu():
 
         choice5=MENU_FONT.render("EXIT",1,black)
 
-        screen.blit(choice5,(235,down+214))
+        screen.blit(choice5,(235,down+215))
+
+        #settings
+
+        six=MENU_FONT.render("6",1,npurple)
+
+        screen.blit(six,(left-10,down+RADIUS*8+110))
+
+        choice6=MENU_FONT.render("Settings",1,npurple)
+
+        screen.blit(choice6,(235,down+271))
 
 
 
         #how to calculate scores
 
-        star=STAR_FONT.render("*Your score will represent the number of attempts you take to find all of the matcher, so the", 1, npurple)
+        star=STAR_FONT.render("*Your score will represent the number of attempts you take to find all of the matches, so the", 1, npurple)
 
         star2=STAR_FONT.render(" lower the score you get, the better you played!*",1,npurple)
 
-        screen.blit(star,(10,700))
+        screen.blit(star,(10,735))
 
-        screen.blit(star2,(10,star.get_height()+705))
+        screen.blit(star2,(10,star.get_height()+740))
 
 
 
