@@ -22,12 +22,7 @@
 #user will aim for a lower score at the end of the game, a lower score is better than a high score
 #end of game display score and celebration will appear
 
-
-
-
 import pygame, time, random, math
-
-
 
 #setup
 
@@ -40,8 +35,6 @@ pygame.init()
 screen=pygame.display.set_mode((WIDTH,HEIGHT))
 
 pygame.display.set_caption("MEMORY FLIP GAME!")
-
-
 
 #variables
 
@@ -70,35 +63,47 @@ square=pygame.image.load("Images\\backofCard.PNG")
 square=pygame.transform.scale(square,(size,size))
 
 
-
 aariz=pygame.image.load("Images\\aariz.PNG")
 aariz=pygame.transform.scale(aariz,(size,size))
+
 alex=pygame.image.load("Images\\alex.PNG")
+alex=pygame.transform.scale(alex,(size,size))
 
 zain=pygame.image.load("Images\\zain.PNG")
+zain=pygame.transform.scale(zain,(size,size))
 
 varun=pygame.image.load("Images\\varun.PNG")
+varun=pygame.transform.scale(varun,(size,size))
 
 devin=pygame.image.load("Images\devin.PNG")
+devin=pygame.transform.scale(devin,(size,size))
 
 vivaan=pygame.image.load("Images\\vivaan.PNG")
+vivaan=pygame.transform.scale(vivaan,(size,size))
 
 lily=pygame.image.load("Images\\lily.PNG")
+lily=pygame.transform.scale(lily,(size,size))
 
 michelle=pygame.image.load("Images\\michelle.PNG")
+michelle=pygame.transform.scale(michelle,(size,size))
 
 zeff=pygame.image.load("Images\\zeff.PNG")
+zeff=pygame.transform.scale(zeff,(size,size))
 
 prabath=pygame.image.load("Images\\prabath.PNG")
+prabath=pygame.transform.scale(prabath,(size,size))
 
 christine=pygame.image.load("Images\\christine.PNG")
+christine=pygame.transform.scale(christine,(size,size))
 
 chris=pygame.image.load("Images\\chris.PNG")
+chris=pygame.transform.scale(chris,(size,size))
 
 suarez=pygame.image.load("Images\suarez.PNG")
+suarez=pygame.transform.scale(suarez,(size,size))
 
 dillon=pygame.image.load("Images\\dillon.PNG")
-
+dillon=pygame.transform.scale(dillon,(size,size))
 
 
 
@@ -127,6 +132,10 @@ purple= (158, 98, 170)
 
 npurple= (102,102,255)
 
+lightpink=(250, 219, 216)
+
+lightyellow=(252, 243, 207)
+
 
 #fonts
 
@@ -152,13 +161,13 @@ BESTSCORES_FONT = pygame.font.SysFont('comicsansms', 55)
 
 #easy 4x4
 
-matches1=[aariz,aariz,alex,alex,zain,zain,varun,varun,devin,devin,vivaan,vivaan,lily,lily,michelle,michelle]
+matches1=[aariz,aariz,alex,alex,zain,zain,varun,varun,devin,devin,vivaan,vivaan]
 
 
 
 #medium 4x6
 
-matches2=[aariz,aariz,alex,alex,zain,zain,varun,varun,devin,devin,vivaan,vivaan,lily,lily,michelle,michelle,zeff,zeff,prabath,prabath,christine,christine,chris,chris]
+matches2=[aariz,aariz,alex,alex,zain,zain,varun,varun,devin,devin,vivaan,vivaan,lily,lily,michelle,michelle,zeff,zeff,prabath,prabath]
 
 
 
@@ -185,7 +194,7 @@ def best_scores():
 
         screen.fill(blue)
 
-        text = TITLE_FONT.render("BEST SCORES FOR:", 1, black)
+        text = TITLE_FONT.render("RECORD SCORES OF GAME:", 1, black)
 
         screen.blit(text, (WIDTH/2 - text.get_width()/2, 20))
 
@@ -1031,23 +1040,23 @@ def main(dict):
 
                         pygame.time.delay(700)
 
-                        screen.blit(fireworks,(0,0)) #new background
+                        screen.blit((celebration),(0,0)) #new background
 
-                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,blue) #tells user their score
+                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,npurple) #tells user their score
 
                         screen.blit(win,(100,350))
 
-                        file1 = open("memoryEasy.txt", "r")
+                        file1 = open("Games\\MemoryEasy.txt", "r")
 
                         if int(file1.read())>score:#checks if score is better than best
 
                             file1.close()
 
-                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,white) #lets user know they beat score
+                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,npurple) #lets user know they beat score
 
                             screen.blit(best,(150,450))
 
-                            file1=open("memoryEasy.txt","w") #replaces old best score with new one
+                            file1=open("Games\\MemoryEasy.txt","w") #replaces old best score with new one
 
                             file1.write(str(score))
 
@@ -1063,23 +1072,23 @@ def main(dict):
 
                         pygame.time.delay(700)
 
-                        screen.blit(fireworks,(0,0))
+                        screen.blit(celebration,(0,0))
 
-                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
+                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,npurple)
 
                         screen.blit(win,(100,350))
 
-                        file2 = open("memoryMedium.txt", "r")
+                        file2 = open("Games\\MemoryMedium.txt", "r")
 
                         if int(file2.read())>score:
 
                             file2.close()
 
-                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,white)
+                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,npurple)
 
                             screen.blit(best,(150,450))
 
-                            file2=open("memoryMedium.txt","w")
+                            file2=open("Games\\MemoryMedium.txt","w")
 
                             file2.write(str(score))
 
@@ -1097,7 +1106,7 @@ def main(dict):
 
                         screen.blit(celebration,(0,0))
 
-                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,white)
+                        win=WIN_FONT.render("Good job! Your score was "+str(score)+"!",1,npurple)
 
                         screen.blit(win,(100,350))
 
@@ -1107,7 +1116,7 @@ def main(dict):
 
                             file3.close()
 
-                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,white)
+                            best=TITLE_FONT.render("NEW BEST SCORE!!!",1,npurple)
 
                             screen.blit(best,(150,450))
 
@@ -1126,6 +1135,19 @@ def main(dict):
 
 
                     pygame.display.update()
+
+def setting():
+    
+    screen.fill(lightyellow)
+    pygame.draw.circle(screen, black, (left, down), RADIUS, 3)
+
+    seven=MENU_FONT.render("5",1,npurple)
+    screen.blit(seven,(left-10,down+RADIUS*8+110))
+    choice7=MENU_FONT.render("EXIT",1,npurple)
+    screen.blit(choice7,(235,down+271))
+    pygame.display.update()
+    pygame.time.delay(1000)
+
 
 
 
@@ -1210,7 +1232,7 @@ def menu():
 
         screen.blit(two,(left-10,down+RADIUS*1.7))
 
-        choice2=MENU_FONT.render("Meduim (20)",1,yellow)
+        choice2=MENU_FONT.render("Medium (20)",1,yellow)
 
         screen.blit(choice2,(235,down+35))
 
@@ -1238,27 +1260,30 @@ def menu():
 
         screen.blit(choice4,(235,down+155))
 
+        #settings
+
+        five=MENU_FONT.render("5",1,npurple)
+
+        screen.blit(five,(left-10,down+RADIUS*8+55))
+
+        choice5=MENU_FONT.render("Settings",1,npurple)
+
+        screen.blit(choice5,(235,down+215))
 
 
         #exit
 
-        five=MENU_FONT.render("5",1,black)
-
-        screen.blit(five,(left-10,down+RADIUS*8+55))
-
-        choice5=MENU_FONT.render("EXIT",1,black)
-
-        screen.blit(choice5,(235,down+215))
-
-        #settings
-
-        six=MENU_FONT.render("6",1,npurple)
+        six=MENU_FONT.render("6",1,black)
 
         screen.blit(six,(left-10,down+RADIUS*8+110))
 
-        choice6=MENU_FONT.render("Settings",1,npurple)
+        choice6=MENU_FONT.render("EXIT",1,black)
 
         screen.blit(choice6,(235,down+271))
+
+        
+
+
 
 
 
@@ -1363,10 +1388,19 @@ def menu():
                                 dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*8+80) - m_y)**2)
 
                                 if dis<RADIUS:
-
+                                    print("setting")
+                                    setting()
                                     runMenu=False
 
-                                    run=False
+                                    
+                                else:
+
+                                    dis = math.sqrt((left - m_x)**2 + ((down+RADIUS*10+100) - m_y)**2)
+                            
+                                    if dis<RADIUS:
+                                        runMenu=False
+                                        run=False
+
 
 
 
@@ -1374,6 +1408,6 @@ def menu():
 
         pygame.display.update()
 
-
-
-menu() #runs menu, and therefore, everything else
+run = True
+while run:
+    menu() #runs menu, and therefore, everything else
