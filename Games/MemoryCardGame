@@ -1224,6 +1224,9 @@ def menu():
 
         screen.blit(choice1,(235,down-26))
 
+       
+        
+
 
 
         #medium
